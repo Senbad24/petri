@@ -1,0 +1,3 @@
+Se implemento la Red de Petri de 2 formas diferentes: usando una lista y usando un mapa.
+Al usar una lista para guardar la red, tuve que recorrer toda la lista para buscar el preset y el postset de una determinada transicion teniendo una complejidad O(n), lo que puede ser lento en redes grandes.
+Por otra parte al usar mapas ese problema no existe al buscar el postset de una transicion, gracias a la naturaleza de los mapas esa funcion tiene una complegidad de O(1), lamentablemente para el preset tendria que regresar a recorrer todo el mapa para obtenerlo, aunque se podria arreglar teniendo un segundo mapa que estucviera invertido.
