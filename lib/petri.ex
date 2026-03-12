@@ -88,4 +88,24 @@ defmodule Petri do
       m
     end
   end
+
+  #Funciones enablement
+  def enablement(f, m) do
+    all_nodes = f |> List.flatten() |> Enum.uniq()
+
+    all_nodes
+    |> Enum.filter(fn nodo ->
+      p_set = preset(f, nodo)
+      MapSet.size(p_set) > 0 and MapSet.subset?(p_set, m)
+    end)
+  end
+
+  def enablement_m(f, m) do
+    f
+    |> Map.keys()
+    |> Enum.filter(fn nodo ->
+      p_set = preset_m(f, nodo)
+      MapSet.size(p_set) > 0 and MapSet.subset?(p_set, m)
+    end)
+  end
 end

@@ -21,4 +21,8 @@ defmodule PetriTest do
 
     assert MapSet.equal?(Petri.fire_m(red,n,m), resultado_esperado)
   end
+
+  test "Prueba enablement" do
+    
+  end
 end
