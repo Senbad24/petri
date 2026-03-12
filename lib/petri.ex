@@ -34,6 +34,7 @@ defmodule Petri do
     }
   end
 
+  # Funciones para la implementacion con lista
   def preset(f, n) do
     f
     |> Enum.filter(fn [_a, b] -> b == n end)
@@ -57,6 +58,32 @@ defmodule Petri do
       m
       |> MapSet.difference(preset(f, n))
       |> MapSet.union(postset(f, n))
+    else
+      m
+    end
+  end
+
+  #Funciones para la implementacion con mapa
+  def preset_m(f, n) do
+    f
+    |> Enum.filter(fn {_a,b} -> MapSet.member?(b,n) end)
+    |> Enum.map(fn {a,_b} -> a end)
+    |> MapSet.new()
+  end
+
+  def postset_m(f, n) do
+    Map.get(f, n)
+  end
+
+  def is_enable_m(f, n, m) do
+    MapSet.subset?(preset_m(f,n), m)
+  end
+
+  def fire_m(f, n, m) do
+    if is_enable_m(f, n, m) do
+      m
+      |> MapSet.difference(preset_m(f, n))
+      |> MapSet.union(postset_m(f, n))
     else
       m
     end
