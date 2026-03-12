@@ -22,7 +22,21 @@ defmodule PetriTest do
     assert MapSet.equal?(Petri.fire_m(red,n,m), resultado_esperado)
   end
 
-  test "Prueba enablement" do
-    
+  test "Prueba enablement lista" do
+    red = Petri.ex1l()
+    m = MapSet.new([P0,P1])
+
+    resultado_esperado = MapSet.new([A,B])
+    res = MapSet.new(Petri.enablement(red,m))
+    assert MapSet.equal?(res, resultado_esperado)
+  end
+
+  test "Prueba enablement mapa" do
+    red = Petri.ex1m()
+    m = MapSet.new([P0,P1])
+
+    resultado_esperado = MapSet.new([A,B])
+    res = MapSet.new(Petri.enablement_m(red,m))
+    assert MapSet.equal?(res, resultado_esperado)
   end
 end
